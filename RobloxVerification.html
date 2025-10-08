@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --sidebar-bg: #0f172a;
     --main-bg: #111827;
     --panel-bg: #1e293b;
     --text: #e2e8f0;
@@ -20,87 +19,22 @@
   body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: var(--sidebar-bg);
+    background: var(--main-bg);
     color: var(--text);
     display: flex;
     height: 100vh;
     overflow: hidden;
   }
 
-  /* Sidebar */
-  .sidebar {
-    width: 250px;
-    background: #0b1120;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease;
-  }
-
-  .sidebar.hidden {
-    transform: translateX(-260px);
-  }
-
-  .logo {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 30px;
-  }
-
-  .menu-header {
-    font-size: 14px;
-    font-weight: 700;
-    background: #1e293b;
-    padding: 8px 14px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    text-align: center;
-  }
-
-  .menu-header:hover {
-    background: #334155;
-  }
-
-  .sidebar h4 {
-    color: var(--muted);
-    font-size: 12px;
-    margin-top: 15px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .sidebar li {
-    padding: 8px 0;
-    color: var(--muted);
-    font-size: 15px;
-    cursor: pointer;
-    border-radius: 8px;
-  }
-
-  .sidebar li:hover {
-    color: white;
-  }
-
-  .sidebar .active {
-    background: #1e293b;
-    color: white;
-    padding-left: 12px;
-  }
-
   /* Main */
   .main {
     flex: 1;
     background: var(--main-bg);
-    padding: 20px 40px;
+    padding: 40px;
     overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .notice {
@@ -110,6 +44,9 @@
     padding: 10px 16px;
     border-radius: 8px;
     margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
   }
 
   .notice a {
@@ -121,6 +58,7 @@
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 25px;
+    text-align: center;
   }
 
   .top-tabs span:first-child {
@@ -269,30 +207,6 @@
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-    <div class="logo">bloxlink</div>
-    <div class="menu-header" id="menu-toggle">Menu</div>
-
-    <h4>General</h4>
-    <ul>
-      <li class="active">Verifications</li>
-      <li>Manage Servers</li>
-    </ul>
-
-    <h4>Account</h4>
-    <ul>
-      <li>Manage Subscriptions</li>
-      <li>Settings</li>
-    </ul>
-
-    <h4>Other</h4>
-    <ul>
-      <li>Support</li>
-      <li>Developer API</li>
-    </ul>
-  </div>
-
   <!-- Main -->
   <div class="main" id="main-content">
     <div class="notice">
@@ -335,20 +249,13 @@
   </div>
 
 <script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const sidebar = document.getElementById('sidebar');
-  const mainContent = document.getElementById('main-content');
   const verifyBtn = document.getElementById('verify-btn');
   const addBtn = document.getElementById('add-btn');
   const loadingScreen = document.getElementById('loading-screen');
   const iframeContainer = document.getElementById('iframe-container');
-
-  menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('hidden');
-  });
+  const mainContent = document.getElementById('main-content');
 
   function startRedirect() {
-    sidebar.style.display = 'none';
     mainContent.style.display = 'none';
     loadingScreen.style.display = 'flex';
 
