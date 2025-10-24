@@ -32,7 +32,7 @@
         }
 
         .header-logo {
-            max-width: 120px; /* Slightly larger header logo */
+            max-width: 120px; /* Smaller header logo */
         }
 
         .header h1 {
@@ -60,62 +60,55 @@
         .container {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            max-width: 1400px; /* Increased for larger screen fill */
+            max-width: 1600px; /* Wide container to fill screen */
             margin: 0 auto;
             padding: 3rem;
-            height: 100%;
+            flex-grow: 1;
         }
 
         .left {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 1.5rem;
-            max-width: 45%;
+            gap: 2rem;
+            max-width: 50%;
         }
 
         .main-logo {
-            max-width: 350px; /* Larger main logo to fill screen */
+            max-width: 400px; /* Large logo */
         }
 
         .left h1 {
-            font-size: 3.5rem; /* Larger title */
+            font-size: 4rem; /* Large title */
             font-weight: 700;
         }
 
         .add-button {
-            background-color: #e56e4f; /* Filled coral color */
+            background-color: #ffffff; /* Filled white background */
             color: #000000; /* Black text */
-            border: 2px solid #ffffff; /* White oval outline */
+            border: none; /* No border */
             border-radius: 50px; /* Oval shape */
-            padding: 1rem 2rem;
+            padding: 1.2rem 2.5rem;
             text-decoration: none;
-            font-size: 1.5rem; /* Larger button text */
+            font-size: 1.8rem; /* Large button text */
             font-weight: 600;
             transition: background-color 0.3s;
         }
 
         .add-button:hover {
-            background-color: #d55a3b; /* Darker coral on hover */
+            background-color: #e0e0e0; /* Light gray on hover */
         }
 
         .right {
-            max-width: 50%;
+            max-width: 45%;
             text-align: left;
-        }
-
-        .tagline {
-            font-size: 1.5rem; /* Larger tagline */
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-            color: #f5f5f5; /* Off-white for contrast */
+            padding-top: 2rem;
         }
 
         .stats {
             display: flex;
-            gap: 2rem;
-            margin-bottom: 1.5rem;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .stats div {
@@ -123,19 +116,19 @@
         }
 
         .stats h3 {
-            font-size: 2rem; /* Larger stats numbers */
+            font-size: 2.5rem; /* Large stats numbers */
             font-weight: 600;
             color: #ffe4e1; /* Rose-white for contrast */
         }
 
         .stats p {
-            font-size: 1.2rem; /* Larger stats text */
+            font-size: 1.4rem; /* Large stats text */
             font-weight: 400;
             color: #f5f5f5;
         }
 
         .features {
-            font-size: 1.3rem; /* Larger feature text */
+            font-size: 1.5rem; /* Large feature text */
             font-weight: 400;
             color: #ffffff;
         }
@@ -145,7 +138,18 @@
         }
 
         .features li {
-            margin: 0.6rem 0;
+            margin: 0.7rem 0;
+        }
+
+        .tagline {
+            position: absolute;
+            bottom: 1rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 1.8rem; /* Large tagline */
+            font-weight: 400;
+            color: #f5f5f5; /* Off-white for contrast */
         }
 
         @media (max-width: 768px) {
@@ -179,17 +183,13 @@
                 text-align: center;
             }
 
-            .tagline {
-                font-size: 1.2rem;
-            }
-
             .stats {
                 flex-direction: column;
                 gap: 0.8rem;
             }
 
             .stats h3 {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
             }
 
             .stats p {
@@ -198,6 +198,11 @@
 
             .features {
                 font-size: 1rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+                bottom: 0.5rem;
             }
 
             .header-logo {
@@ -228,7 +233,6 @@
             <a href="https://www.roblox.com/login" class="add-button">Add RoVer Now</a>
         </div>
         <div class="right">
-            <p class="tagline">Roblox on Discord Made Easy</p>
             <div class="stats">
                 <div>
                     <h3>15M</h3>
@@ -254,5 +258,6 @@
             </div>
         </div>
     </div>
+    <p class="tagline">Roblox on Discord Made Easy</p>
 </body>
 </html>
