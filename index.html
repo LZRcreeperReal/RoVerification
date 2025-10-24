@@ -44,11 +44,13 @@ body::after {
     z-index: 0;
 }
 
+/* Header */
 .header {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1.5rem;
+    padding: 1.5rem 2rem;
+    background-color: #000000;
     position: relative;
     z-index: 1;
 }
@@ -71,6 +73,7 @@ body::after {
 .header h1 {
     font-size: 1.6rem;
     font-weight: 700;
+    color: #ffffff;
 }
 
 .help-button {
@@ -82,7 +85,7 @@ body::after {
     text-decoration: none;
     font-size: 1rem;
     font-weight: 600;
-    margin-left: 1rem;
+    margin-left: auto;
     transition: background-color 0.3s;
 }
 
@@ -90,6 +93,7 @@ body::after {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Main container */
 .container {
     max-width: 1800px;
     margin: 0 auto;
@@ -193,18 +197,21 @@ body::after {
     opacity: 0.5;
 }
 
-/* Right side scrollable */
+/* Right side centered */
 .right {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 2rem;
 }
 
-/* Stats layout horizontal */
+/* Stats layout horizontal and centered */
 .stats {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
     text-align: center;
 }
 
@@ -222,13 +229,14 @@ body::after {
 }
 
 .stats p {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     font-weight: 600;
     color: #ffffff;
 }
 
 .features ul {
     list-style: none;
+    text-align: center;
 }
 
 .features li {
