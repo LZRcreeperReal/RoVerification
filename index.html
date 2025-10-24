@@ -18,27 +18,90 @@
             color: #ffffff;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
             height: 100vh; /* Full viewport height, no scroll */
-            text-align: center;
-            line-height: 1.4;
+        }
+
+        .header {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .header-logo {
+            max-width: 100px; /* Smaller logo for top-left */
+        }
+
+        .header h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .help-button {
+            background: none;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            border-radius: 50px; /* Oval shape */
+            padding: 0.4rem 1rem;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-left: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .help-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .container {
-            max-width: 800px;
-            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            height: 100%;
         }
 
-        .logo {
-            max-width: 300px; /* Large logo */
-            margin-bottom: 1rem;
+        .left {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            max-width: 40%;
         }
 
-        h1 {
-            font-size: 2rem;
+        .main-logo {
+            max-width: 250px; /* Main logo size */
+        }
+
+        .left h1 {
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+        }
+
+        .add-button {
+            background-color: #e56e4f; /* Coral from gradient */
+            color: #000000; /* Black text */
+            border: 2px solid #ffffff; /* White oval outline */
+            border-radius: 50px; /* Oval shape */
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .add-button:hover {
+            background-color: #d55a3b; /* Darker coral on hover */
+        }
+
+        .right {
+            max-width: 50%;
+            text-align: left;
         }
 
         .tagline {
@@ -50,8 +113,7 @@
 
         .stats {
             display: flex;
-            justify-content: center;
-            gap: 2rem;
+            gap: 1.5rem;
             margin-bottom: 1rem;
         }
 
@@ -74,7 +136,6 @@
         .features {
             font-size: 1rem;
             font-weight: 400;
-            margin-bottom: 1.5rem;
             color: #ffffff;
         }
 
@@ -86,28 +147,30 @@
             margin: 0.4rem 0;
         }
 
-        .button {
-            background-color: #e56e4f; /* Matches middle gradient color (coral) */
-            color: #ffffff;
-            padding: 0.8rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-
-        .button:hover {
-            background-color: #d55a3b; /* Darker coral for hover */
-        }
-
         @media (max-width: 768px) {
-            .logo {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem;
+            }
+
+            .left {
+                max-width: 100%;
+                align-items: center;
+                text-align: center;
+            }
+
+            .main-logo {
                 max-width: 200px;
             }
 
-            h1 {
-                font-size: 1.5rem;
+            .left h1 {
+                font-size: 1.8rem;
+            }
+
+            .right {
+                max-width: 100%;
+                text-align: center;
             }
 
             .tagline {
@@ -127,7 +190,7 @@
                 font-size: 0.85rem;
             }
 
-            .button {
+            .add-button {
                 font-size: 1rem;
                 padding: 0.6rem 1.2rem;
             }
@@ -135,34 +198,43 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="https://rover.link/logo-white-NE2GPYXA.svg" alt="RoVer Logo" class="logo">
+    <div class="header">
+        <img src="https://rover.link/logo-white-NE2GPYXA.svg" alt="RoVer Logo" class="header-logo">
         <h1>RoVer</h1>
-        <p class="tagline">Roblox on Discord Made Easy</p>
-        <div class="stats">
-            <div>
-                <h3>15M</h3>
-                <p>Trusted Users</p>
+        <a href="https://rover.link/help" class="help-button">Help</a>
+    </div>
+    <div class="container">
+        <div class="left">
+            <img src="https://rover.link/logo-white-NE2GPYXA.svg" alt="RoVer Logo" class="main-logo">
+            <h1>RoVer</h1>
+            <a href="https://www.roblox.com/login" class="add-button">Add RoVer Now</a>
+        </div>
+        <div class="right">
+            <p class="tagline">Roblox on Discord Made Easy</p>
+            <div class="stats">
+                <div>
+                    <h3>15M</h3>
+                    <p>Trusted Users</p>
+                </div>
+                <div>
+                    <h3>370K+</h3>
+                    <p>Servers</p>
+                </div>
+                <div>
+                    <h3>9 Years</h3>
+                    <p>Reliable</p>
+                </div>
             </div>
-            <div>
-                <h3>370K+</h3>
-                <p>Servers</p>
-            </div>
-            <div>
-                <h3>9 Years</h3>
-                <p>Reliable</p>
+            <div class="features">
+                <ul>
+                    <li>Verify Roblox accounts to block bots</li>
+                    <li>Bind roles to Roblox groups/GamePasses</li>
+                    <li>Auto-update nicknames & roles</li>
+                    <li>No ads, privacy-first</li>
+                    <li>Trusted by top communities</li>
+                </ul>
             </div>
         </div>
-        <div class="features">
-            <ul>
-                <li>Verify Roblox accounts to block bots</li>
-                <li>Bind roles to Roblox groups/GamePasses</li>
-                <li>Auto-update nicknames & roles</li>
-                <li>No ads, privacy-first</li>
-                <li>Trusted by top communities</li>
-            </ul>
-        </div>
-        <a href="https://www.roblox.com/login" class="button">Add RoVer Now</a>
     </div>
 </body>
 </html>
