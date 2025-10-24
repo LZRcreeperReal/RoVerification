@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoVer - Roblox on Discord Made Easy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -32,7 +32,7 @@
         }
 
         .header-logo {
-            max-width: 150px; /* Larger header logo */
+            max-width: 150px; /* Header logo */
         }
 
         .header h1 {
@@ -61,11 +61,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1800px; /* Wider to fill screen */
+            max-width: 1800px; /* Wide to fill screen */
             margin: 0 auto;
-            padding: 2rem 4rem;
+            padding: 2rem 6rem 2rem 2rem; /* More left padding to shift content left */
             flex-grow: 1;
-            margin-top: 4rem; /* Lower content to center vertically */
+            margin-top: 4rem; /* Center vertically */
         }
 
         .left {
@@ -73,16 +73,17 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 2.5rem;
-            max-width: 50%;
+            max-width: 45%;
         }
 
         .main-logo {
-            max-width: 500px; /* Larger logo to fill screen */
+            max-width: 550px; /* Larger logo */
         }
 
         .left h1 {
-            font-size: 5rem; /* Larger title */
-            font-weight: 700;
+            font-size: 5.5rem; /* Larger title */
+            font-weight: 900; /* Bolder for sleeker look */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
         }
 
         .add-button {
@@ -90,10 +91,11 @@
             color: #000000; /* Black text */
             border: none; /* No border */
             border-radius: 50px; /* Oval shape */
-            padding: 1.5rem 3rem;
+            padding: 1.5rem 3.5rem;
             text-decoration: none;
-            font-size: 2rem; /* Larger button text */
-            font-weight: 600;
+            font-size: 2.2rem; /* Larger button text */
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s;
         }
 
@@ -102,14 +104,14 @@
         }
 
         .right {
-            max-width: 45%;
+            max-width: 50%;
             text-align: left;
             padding-top: 3rem;
         }
 
         .stats {
             display: flex;
-            gap: 3rem;
+            gap: 3.5rem;
             margin-bottom: 2.5rem;
         }
 
@@ -118,21 +120,24 @@
         }
 
         .stats h3 {
-            font-size: 3rem; /* Larger stats numbers */
-            font-weight: 600;
-            color: #ffe4e1; /* Rose-white for contrast */
+            font-size: 3.5rem; /* Larger stats numbers */
+            font-weight: 900; /* Bolder */
+            color: #ffe4e1; /* Rose-white */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
 
         .stats p {
-            font-size: 1.6rem; /* Larger stats text */
+            font-size: 1.8rem; /* Larger stats text */
             font-weight: 400;
             color: #f5f5f5;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .features {
-            font-size: 1.8rem; /* Larger feature text */
-            font-weight: 400;
+            font-size: 2rem; /* Larger feature text */
+            font-weight: 600; /* Bolder for sleek look */
             color: #ffffff;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
         }
 
         .features ul {
@@ -140,7 +145,7 @@
         }
 
         .features li {
-            margin: 0.8rem 0;
+            margin: 1rem 0; /* More spacing */
         }
 
         .tagline {
@@ -149,11 +154,12 @@
             left: 0;
             right: 0;
             text-align: center;
-            font-family: 'Dancing Script', cursive; /* Swirly font */
-            font-size: 2.5rem; /* Larger tagline */
-            font-weight: 700;
-            color: #f5f5f5; /* Off-white for contrast */
-            letter-spacing: 2px; /* Stretched appearance */
+            font-family: 'Inter', sans-serif; /* Clean font */
+            font-size: 3rem; /* Larger tagline */
+            font-weight: 400;
+            color: #f5f5f5; /* Off-white */
+            letter-spacing: 3px; /* Stretched */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow */
         }
 
         @media (max-width: 768px) {
@@ -161,7 +167,7 @@
                 flex-direction: column;
                 align-items: center;
                 padding: 1.5rem;
-                margin-top: 6rem; /* Adjust for mobile centering */
+                margin-top: 6rem;
             }
 
             .left {
@@ -175,11 +181,11 @@
             }
 
             .left h1 {
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
 
             .add-button {
-                font-size: 1.4rem;
+                font-size: 1.5rem;
                 padding: 1rem 2rem;
             }
 
@@ -195,7 +201,7 @@
             }
 
             .stats h3 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
             .stats p {
@@ -203,13 +209,13 @@
             }
 
             .features {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
             }
 
             .tagline {
                 font-size: 1.8rem;
+                letter-spacing: 1.5px;
                 bottom: 1rem;
-                letter-spacing: 1px;
             }
 
             .header-logo {
