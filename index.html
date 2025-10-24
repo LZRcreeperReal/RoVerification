@@ -170,6 +170,26 @@ body::after {
     background-color: #e0e0e0;
 }
 
+.instructions {
+    margin-top: 1rem;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.instructions li {
+    margin: 0.5rem 0;
+}
+
+/* White separator style */
+.separator {
+    width: 80%;
+    height: 6px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin: 2rem 0;
+    opacity: 0.5;
+}
+
 .right {
     flex: 1 1 400px;
     display: flex;
@@ -179,15 +199,16 @@ body::after {
 
 .stats {
     display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 2rem;
 }
 
 .stats div {
     display: flex;
-    gap: 1rem;
+    flex-direction: column;
     align-items: center;
-    flex: 1 1 45%;
+    gap: 0.5rem;
 }
 
 .stats h3 {
@@ -197,8 +218,8 @@ body::after {
 }
 
 .stats p {
-    font-size: 1.5rem;
-    font-weight: 400;
+    font-size: 1.8rem;
+    font-weight: 600;
     color: #ffffff;
 }
 
@@ -233,6 +254,15 @@ body::after {
                 <input type="text" id="roblox-username" placeholder="Roblox username">
                 <a href="#" class="add-button">Verify</a>
             </div>
+
+            <ol class="instructions">
+                <li>Type Roblox username</li>
+                <li>Click Verify</li>
+                <li>Join Group</li>
+                <li>Wait 5 seconds</li>
+            </ol>
+
+            <div class="separator"></div> <!-- Separator between verify and stats -->
         </div>
 
         <div class="right">
@@ -250,6 +280,9 @@ body::after {
                     <p>Reliable</p>
                 </div>
             </div>
+
+            <div class="separator"></div> <!-- Separator between stats and features -->
+
             <div class="features">
                 <ul>
                     <li>Verify Roblox accounts to block bots</li>
