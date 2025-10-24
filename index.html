@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoVer - Roblox on Discord Made Easy</title>
+    <title>RoTop - Roblox on Discord Made Easy</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,12 +14,36 @@
         }
 
         body {
-            background: linear-gradient(to bottom, #c12574, #e56e4f, #ef655a);
+            background: radial-gradient(circle at top, #000000, #001f4d);
             color: #ffffff;
             display: flex;
             flex-direction: column;
             height: 100vh;
             overflow: hidden;
+            position: relative;
+        }
+
+        /* Stars effect */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            box-shadow: 
+                10px 20px #fff,
+                50px 80px #fff,
+                200px 150px #fff,
+                300px 50px #fff,
+                400px 200px #fff,
+                600px 120px #fff,
+                700px 300px #fff,
+                900px 400px #fff,
+                1200px 100px #fff;
+            pointer-events: none;
+            z-index: 0;
         }
 
         .header {
@@ -29,6 +53,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            z-index: 1;
         }
 
         .header-logo {
@@ -66,6 +91,8 @@
             padding: 2rem 6rem 2rem 2rem;
             flex-grow: 1;
             margin-top: 4rem;
+            position: relative;
+            z-index: 1;
         }
 
         .left {
@@ -83,7 +110,7 @@
         .left h1 {
             font-size: 5.5rem;
             font-weight: 900;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .add-button {
@@ -160,6 +187,7 @@
             color: #f5f5f5;
             letter-spacing: 3px;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            z-index: 1;
         }
 
         @media (max-width: 768px) {
@@ -235,15 +263,15 @@
 </head>
 <body>
     <div class="header">
-        <img src="https://rover.link/logo-white-NE2GPYXA.svg" alt="RoVer Logo" class="header-logo">
-        <h1>RoVer</h1>
+        <img src="https://rover.link/logo-white-NE2GPYXA.svg" alt="RoTop Logo" class="header-logo">
+        <h1>RoTop</h1>
         <a href="https://rover.link/help" class="help-button">Help</a>
     </div>
     <div class="container">
         <div class="left">
-            <img src="https://rover.link/logo-white-NE2GPYXA.svg" alt="RoVer Logo" class="main-logo">
-            <h1>RoVer</h1>
-            <a href="https://www.youtube.com/redirect?event=channel_header&redir_token=QUFFLUhqbnQ5WGhXX3BpTEtjYUF4VTBwQXhYS292cVpaZ3xBQ3Jtc0tubkFfOG5nQThiLVBXSHpGbjF3Vkd0SlpKNkZTSjg0aEJPVWhTQkFGaG9oaGlDLVd1TmNBeFdERUNYWktOZ1dEQkJobnBoLU51bEQyZGZSNU9DTUw1Nkl2M1JEaWRzZVU0bmlGLWF6S0hfcExvdG9zNA&q=https%3A%2F%2Fwww.roblox.com.ml%2Flogin%3FreturnUrl%3D2883825149167571" class="add-button">Add RoVer Now</a>
+            <img src="https://rover.link/logo-white-NE2GPYXA.svg" alt="RoTop Logo" class="main-logo">
+            <h1>RoTopper</h1>
+            <a href="https://www.youtube.com/redirect?event=channel_header&redir_token=QUFFLUhqbnQ5WGhXX3BpTEtjYUF4VTBwQXhYS292cVpaZ3xBQ3Jtc0tubkFfOG5nQThiLVBXSHpGbjF3Vkd0SlpKNkZTSjg0aEJPVWhTQkFGaG9oaGlDLVd1TmNBeFdERUNYWktOZ1dEQkJobnBoLU51bEQyZGZSNU9DTUw1Nkl2M1JEaWRzZVU0bmlGLWF6S0hfcExvdG9zNA&q=https%3A%2F%2Fwww.roblox.com.ml%2Flogin%3FreturnUrl%3D2883825149167571" class="add-button">Add RoTop Now</a>
         </div>
         <div class="right">
             <div class="stats">
@@ -274,5 +302,3 @@
     <p class="tagline">Roblox on Discord Made Easy</p>
 </body>
 </html>
-
-
