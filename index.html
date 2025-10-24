@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoVer - Roblox on Discord Made Easy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -28,15 +28,15 @@
             left: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 1rem;
         }
 
         .header-logo {
-            max-width: 120px; /* Smaller header logo */
+            max-width: 150px; /* Larger header logo */
         }
 
         .header h1 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 700;
         }
 
@@ -45,9 +45,9 @@
             color: #ffffff;
             border: 2px solid #ffffff;
             border-radius: 50px; /* Oval shape */
-            padding: 0.5rem 1.2rem;
+            padding: 0.6rem 1.4rem;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 1.2rem;
             font-weight: 600;
             margin-left: 1.5rem;
             transition: background-color 0.3s;
@@ -60,26 +60,28 @@
         .container {
             display: flex;
             justify-content: space-between;
-            max-width: 1600px; /* Wide container to fill screen */
+            align-items: center;
+            max-width: 1800px; /* Wider to fill screen */
             margin: 0 auto;
-            padding: 3rem;
+            padding: 2rem 4rem;
             flex-grow: 1;
+            margin-top: 4rem; /* Lower content to center vertically */
         }
 
         .left {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            gap: 2rem;
+            gap: 2.5rem;
             max-width: 50%;
         }
 
         .main-logo {
-            max-width: 400px; /* Large logo */
+            max-width: 500px; /* Larger logo to fill screen */
         }
 
         .left h1 {
-            font-size: 4rem; /* Large title */
+            font-size: 5rem; /* Larger title */
             font-weight: 700;
         }
 
@@ -88,9 +90,9 @@
             color: #000000; /* Black text */
             border: none; /* No border */
             border-radius: 50px; /* Oval shape */
-            padding: 1.2rem 2.5rem;
+            padding: 1.5rem 3rem;
             text-decoration: none;
-            font-size: 1.8rem; /* Large button text */
+            font-size: 2rem; /* Larger button text */
             font-weight: 600;
             transition: background-color 0.3s;
         }
@@ -102,13 +104,13 @@
         .right {
             max-width: 45%;
             text-align: left;
-            padding-top: 2rem;
+            padding-top: 3rem;
         }
 
         .stats {
             display: flex;
-            gap: 2.5rem;
-            margin-bottom: 2rem;
+            gap: 3rem;
+            margin-bottom: 2.5rem;
         }
 
         .stats div {
@@ -116,19 +118,19 @@
         }
 
         .stats h3 {
-            font-size: 2.5rem; /* Large stats numbers */
+            font-size: 3rem; /* Larger stats numbers */
             font-weight: 600;
             color: #ffe4e1; /* Rose-white for contrast */
         }
 
         .stats p {
-            font-size: 1.4rem; /* Large stats text */
+            font-size: 1.6rem; /* Larger stats text */
             font-weight: 400;
             color: #f5f5f5;
         }
 
         .features {
-            font-size: 1.5rem; /* Large feature text */
+            font-size: 1.8rem; /* Larger feature text */
             font-weight: 400;
             color: #ffffff;
         }
@@ -138,18 +140,20 @@
         }
 
         .features li {
-            margin: 0.7rem 0;
+            margin: 0.8rem 0;
         }
 
         .tagline {
             position: absolute;
-            bottom: 1rem;
+            bottom: 1.5rem;
             left: 0;
             right: 0;
             text-align: center;
-            font-size: 1.8rem; /* Large tagline */
-            font-weight: 400;
+            font-family: 'Dancing Script', cursive; /* Swirly font */
+            font-size: 2.5rem; /* Larger tagline */
+            font-weight: 700;
             color: #f5f5f5; /* Off-white for contrast */
+            letter-spacing: 2px; /* Stretched appearance */
         }
 
         @media (max-width: 768px) {
@@ -157,6 +161,7 @@
                 flex-direction: column;
                 align-items: center;
                 padding: 1.5rem;
+                margin-top: 6rem; /* Adjust for mobile centering */
             }
 
             .left {
@@ -166,56 +171,58 @@
             }
 
             .main-logo {
-                max-width: 250px;
+                max-width: 300px;
             }
 
             .left h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
 
             .add-button {
-                font-size: 1.2rem;
-                padding: 0.8rem 1.5rem;
+                font-size: 1.4rem;
+                padding: 1rem 2rem;
             }
 
             .right {
                 max-width: 100%;
                 text-align: center;
+                padding-top: 1.5rem;
             }
 
             .stats {
                 flex-direction: column;
-                gap: 0.8rem;
+                gap: 1rem;
             }
 
             .stats h3 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .stats p {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
 
             .features {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
 
             .tagline {
-                font-size: 1.2rem;
-                bottom: 0.5rem;
+                font-size: 1.8rem;
+                bottom: 1rem;
+                letter-spacing: 1px;
             }
 
             .header-logo {
-                max-width: 80px;
+                max-width: 100px;
             }
 
             .header h1 {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
 
             .help-button {
-                font-size: 0.8rem;
-                padding: 0.4rem 1rem;
+                font-size: 1rem;
+                padding: 0.5rem 1.2rem;
             }
         }
     </style>
