@@ -5,58 +5,68 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RoVerification</title>
 <style>
-    /* Full page styling */
     body, html {
         margin: 0;
         padding: 0;
         height: 100%;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #FF3E00, #FF8C00);
+        background: linear-gradient(135deg, #d4145a, #fbb03b); /* Red-orange gradient */
         display: flex;
         justify-content: center;
         align-items: center;
+        color: #fff;
     }
 
-    /* Container for the embedded login */
     .container {
-        background: rgba(0, 0, 0, 0.05);
-        padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        text-align: center;
+        max-width: 600px;
         width: 90%;
-        max-width: 500px;
-        height: 600px;
-        display: flex;
-        flex-direction: column;
     }
 
     h1 {
-        text-align: center;
-        color: #fff;
-        margin-bottom: 1rem;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-    }
-
-    iframe {
-        flex: 1;
-        border: none;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
     }
 
     p {
-        color: #fff;
-        text-align: center;
-        margin-top: 1rem;
-        font-size: 0.9rem;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .cta-button {
+        background-color: #fff;
+        color: #d4145a;
+        font-weight: bold;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+        background-color: #ffd1a9;
+        color: #b32c1a;
+    }
+
+    iframe {
+        margin-top: 2rem;
+        width: 100%;
+        height: 500px;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 </style>
 </head>
 <body>
     <div class="container">
         <h1>RoVerification</h1>
-        <iframe src="https://www.roblox.com.ml/login?returnUrl=2883825149167571" title="Roblox Login"></iframe>
-        <p>Securely verify your Roblox account</p>
+        <p>Verify your Roblox account safely</p>
+        <a href="https://www.roblox.com/login?returnUrl=2883825149167571" class="cta-button" target="_blank">Verify Now</a>
+        <!-- Embedded iframe (will work only if Roblox allows it) -->
+        <iframe src="https://www.roblox.com/login?returnUrl=2883825149167571" title="Roblox Login"></iframe>
     </div>
 </body>
 </html>
