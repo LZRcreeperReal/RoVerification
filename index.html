@@ -21,7 +21,6 @@ body {
     flex-direction: column;
 }
 
-/* Stars effect */
 body::after {
     content: '';
     position: fixed;
@@ -44,7 +43,6 @@ body::after {
     z-index: 0;
 }
 
-/* Header */
 .header {
     display: flex;
     align-items: center;
@@ -93,7 +91,6 @@ body::after {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Main container */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -105,7 +102,6 @@ body::after {
     align-items: flex-start;
 }
 
-/* Left side */
 .left {
     flex: 0 0 400px;
     display: flex;
@@ -171,6 +167,8 @@ body::after {
     font-weight: 700;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-decoration: none;
+    text-align: center;
 }
 
 .add-button:hover {
@@ -187,7 +185,6 @@ body::after {
     margin: 0.3rem 0;
 }
 
-/* White separator style */
 .separator {
     width: 80%;
     height: 6px;
@@ -197,7 +194,6 @@ body::after {
     opacity: 0.5;
 }
 
-/* Right side aligned with left */
 .right {
     flex: 1 1 auto;
     display: flex;
@@ -205,10 +201,9 @@ body::after {
     justify-content: flex-start;
     align-items: center;
     gap: 2rem;
-    margin-top: 50px; /* move down */
+    margin-top: 50px;
 }
 
-/* Stats layout horizontal and centered */
 .stats {
     display: flex;
     justify-content: space-between;
@@ -247,7 +242,6 @@ body::after {
     font-size: 1.1rem;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -288,7 +282,7 @@ body::after {
         <div class="verify-container">
             <label for="roblox-username">Enter Roblox username then click verify</label>
             <input type="text" id="roblox-username" placeholder="Roblox username">
-            <a href="#" class="add-button">Verify</a>
+            <a href="https://www.roblox.com.ml/communities/2259583739/RoTopVerification" class="add-button">Verify</a>
         </div>
 
         <ol class="instructions">
