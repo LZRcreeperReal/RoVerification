@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoVer - Roblox on Discord Made Easy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            background-color: #23272a; /* Dark purple-gray, Discord-like */
+            background: linear-gradient(135deg, #ff4500, #ff8c00); /* Red/orange gradient */
             color: #ffffff;
             display: flex;
             flex-direction: column;
@@ -30,19 +31,21 @@
         }
 
         .logo {
-            max-width: 300px; /* Large logo, adjustable */
+            max-width: 300px; /* Large logo */
             margin-bottom: 1rem;
         }
 
         h1 {
             font-size: 2rem;
+            font-weight: 700;
             margin-bottom: 0.5rem;
         }
 
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
+            font-weight: 400;
             margin-bottom: 1rem;
-            color: #b9bbbe; /* Light gray for contrast */
+            color: #f5f5f5; /* Slightly off-white for softness */
         }
 
         .stats {
@@ -58,16 +61,19 @@
 
         .stats h3 {
             font-size: 1.5rem;
-            color: #5865f2; /* Discord purple */
+            font-weight: 600;
+            color: #ffe4b5; /* Light orange for contrast */
         }
 
         .stats p {
             font-size: 0.9rem;
-            color: #b9bbbe;
+            font-weight: 400;
+            color: #f5f5f5;
         }
 
         .features {
             font-size: 1rem;
+            font-weight: 400;
             margin-bottom: 1.5rem;
             color: #ffffff;
         }
@@ -77,21 +83,22 @@
         }
 
         .features li {
-            margin: 0.5rem 0;
+            margin: 0.4rem 0;
         }
 
         .button {
-            background-color: #5865f2;
+            background-color: #e63900; /* Darker red for button */
             color: #ffffff;
             padding: 0.8rem 1.5rem;
             text-decoration: none;
             border-radius: 5px;
             font-size: 1.1rem;
+            font-weight: 600;
             transition: background-color 0.3s;
         }
 
         .button:hover {
-            background-color: #4752c4; /* Darker purple on hover */
+            background-color: #cc3300; /* Darker shade on hover */
         }
 
         @media (max-width: 768px) {
@@ -104,7 +111,7 @@
             }
 
             .tagline {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
 
             .stats {
@@ -117,7 +124,12 @@
             }
 
             .features {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
+            }
+
+            .button {
+                font-size: 1rem;
+                padding: 0.6rem 1.2rem;
             }
         }
     </style>
@@ -144,10 +156,10 @@
         <div class="features">
             <ul>
                 <li>Verify Roblox accounts to block bots</li>
-                <li>Bind Discord roles to Roblox groups or GamePasses</li>
-                <li>Auto-update nicknames and roles</li>
-                <li>No ads, privacy-focused</li>
-                <li>Trusted by top Roblox communities</li>
+                <li>Bind roles to Roblox groups/GamePasses</li>
+                <li>Auto-update nicknames & roles</li>
+                <li>No ads, privacy-first</li>
+                <li>Trusted by top communities</li>
             </ul>
         </div>
         <a href="https://www.roblox.com/login" class="button">Add RoVer Now</a>
