@@ -13,42 +13,43 @@
         }
 
         body {
-            background-color: #f4f4f9;
-            color: #333;
-            line-height: 1.6;
-        }
-
-        header {
-            background-color: #5865f2;
-            color: white;
+            background-color: #23272a; /* Dark purple-gray, Discord-like */
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Full viewport height, no scroll */
             text-align: center;
-            padding: 2rem;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1.2rem;
+            line-height: 1.4;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
+            max-width: 800px;
+            padding: 1rem;
+        }
+
+        .logo {
+            max-width: 300px; /* Large logo, adjustable */
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #b9bbbe; /* Light gray for contrast */
         }
 
         .stats {
             display: flex;
-            justify-content: space-around;
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2rem;
-            text-align: center;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
         }
 
         .stats div {
@@ -56,39 +57,32 @@
         }
 
         .stats h3 {
-            font-size: 2rem;
-            color: #5865f2;
+            font-size: 1.5rem;
+            color: #5865f2; /* Discord purple */
         }
 
         .stats p {
+            font-size: 0.9rem;
+            color: #b9bbbe;
+        }
+
+        .features {
             font-size: 1rem;
-            color: #666;
+            margin-bottom: 1.5rem;
+            color: #ffffff;
         }
 
-        .section {
-            background-color: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        .features ul {
+            list-style: none;
         }
 
-        .section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: #333;
-        }
-
-        .section p {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 1rem;
+        .features li {
+            margin: 0.5rem 0;
         }
 
         .button {
-            display: inline-block;
             background-color: #5865f2;
-            color: white;
+            color: #ffffff;
             padding: 0.8rem 1.5rem;
             text-decoration: none;
             border-radius: 5px;
@@ -97,99 +91,66 @@
         }
 
         .button:hover {
-            background-color: #4752c4;
-        }
-
-        .cta {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #333;
-            color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            background-color: #4752c4; /* Darker purple on hover */
         }
 
         @media (max-width: 768px) {
+            .logo {
+                max-width: 200px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .tagline {
+                font-size: 1rem;
+            }
+
             .stats {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.5rem;
             }
 
-            header h1 {
-                font-size: 2rem;
+            .stats h3 {
+                font-size: 1.2rem;
             }
 
-            .section h2 {
-                font-size: 1.5rem;
+            .features {
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>RoVer</h1>
-        <p>Roblox on Discord Made Easy</p>
-    </header>
-
     <div class="container">
+        <img src="https://rover.link/logo-white-NE2GPYXA.svg" alt="RoVer Logo" class="logo">
+        <h1>RoVer</h1>
+        <p class="tagline">Roblox on Discord Made Easy</p>
         <div class="stats">
             <div>
                 <h3>15M</h3>
-                <p>Trusted by</p>
+                <p>Trusted Users</p>
             </div>
             <div>
                 <h3>370K+</h3>
-                <p>Reliable for</p>
+                <p>Servers</p>
             </div>
             <div>
                 <h3>9 Years</h3>
-                <p>Experience</p>
+                <p>Reliable</p>
             </div>
         </div>
-
-        <div class="section">
-            <h2>Keep out bots or strangers</h2>
-            <p>With RoVer, you keep your server locked down to users who are actual people who have verified their Roblox account with our system.</p>
-            <p>You can even take it a step further, and only let in members of your group.</p>
+        <div class="features">
+            <ul>
+                <li>Verify Roblox accounts to block bots</li>
+                <li>Bind Discord roles to Roblox groups or GamePasses</li>
+                <li>Auto-update nicknames and roles</li>
+                <li>No ads, privacy-focused</li>
+                <li>Trusted by top Roblox communities</li>
+            </ul>
         </div>
-
-        <div class="section">
-            <h2>Unlimited role bindings</h2>
-            <p>Bind a Discord role to anything on Roblox — like being in a group, owning a GamePass, or having played a game.</p>
-            <p>RoVer can also change Discord nicknames to Roblox usernames, so you can be confident someone is who they say they are.</p>
-        </div>
-
-        <div class="section">
-            <h2>Easy to use, and always up to date</h2>
-            <p>RoVer will keep your members' roles and nickname up-to-date automatically over time, without your users needing to do anything special.</p>
-            <p>And RoVer integrates with the Discord UI, so you can always update a user as-needed with a click of a button.</p>
-        </div>
-
-        <div class="section">
-            <h2>No advertisements</h2>
-            <p>We will never display any ads to you, or to your members. Our revenue comes 100% from server owners who directly support us.</p>
-            <p>We care about your privacy, and will never track you or collect any unnecessary data.</p>
-        </div>
-
-        <div class="section">
-            <h2>Trusted by the biggest servers</h2>
-            <p>Millions of people are already verified with RoVer, so many of your server members will likely already be verified.</p>
-            <p>Some of the biggest Roblox communities on Discord trust RoVer to keep their server safe and integrated. No matter how large your community is, RoVer can handle it.</p>
-        </div>
-
-        <div class="cta">
-            <a href="https://www.roblox.com/login" class="button">Add RoVer Now</a>
-        </div>
+        <a href="https://www.roblox.com/login" class="button">Add RoVer Now</a>
     </div>
-
-    <footer>
-        <p>Getting started is easy. Add RoVer to your server and set everything up through our easy-to-use web dashboard.</p>
-    </footer>
 </body>
 </html>
