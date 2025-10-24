@@ -1,69 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RoVerification</title>
-<style>
-    /* Basic Reset */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoVer - Roblox on Discord Made Easy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
 
-    body, html {
-        height: 100%;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(135deg, #d4145a, #fbb03b);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
 
-    .container {
-        text-align: center;
-        background: rgba(255,255,255,0.05);
-        padding: 50px 30px;
-        border-radius: 20px;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        backdrop-filter: blur(10px);
-        max-width: 400px;
-        width: 90%;
-    }
+        header {
+            background-color: #5865f2;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
 
-    h1 {
-        color: #fff;
-        font-size: 3rem;
-        margin-bottom: 2rem;
-        font-weight: 700;
-    }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
 
-    .cta-button {
-        display: inline-block;
-        background-color: #fff;
-        color: #d4145a;
-        font-weight: bold;
-        padding: 1rem 2.5rem;
-        border-radius: 50px;
-        text-decoration: none;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
+        header p {
+            font-size: 1.2rem;
+        }
 
-    .cta-button:hover {
-        background-color: #ffd1a9;
-        color: #b32c1a;
-        transform: translateY(-3px);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-    }
-</style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .stats div {
+            flex: 1;
+        }
+
+        .stats h3 {
+            font-size: 2rem;
+            color: #5865f2;
+        }
+
+        .stats p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .section {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .section p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #5865f2;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #4752c4;
+        }
+
+        .cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>RoVer</h1>
+        <p>Roblox on Discord Made Easy</p>
+    </header>
+
     <div class="container">
-        <h1>RoVerification</h1>
-        <a href="https://www.roblox.com/login?returnUrl=2883825149167571" class="cta-button" target="_blank">Verify Now</a>
+        <div class="stats">
+            <div>
+                <h3>15M</h3>
+                <p>Trusted by</p>
+            </div>
+            <div>
+                <h3>370K+</h3>
+                <p>Reliable for</p>
+            </div>
+            <div>
+                <h3>9 Years</h3>
+                <p>Experience</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Keep out bots or strangers</h2>
+            <p>With RoVer, you keep your server locked down to users who are actual people who have verified their Roblox account with our system.</p>
+            <p>You can even take it a step further, and only let in members of your group.</p>
+        </div>
+
+        <div class="section">
+            <h2>Unlimited role bindings</h2>
+            <p>Bind a Discord role to anything on Roblox — like being in a group, owning a GamePass, or having played a game.</p>
+            <p>RoVer can also change Discord nicknames to Roblox usernames, so you can be confident someone is who they say they are.</p>
+        </div>
+
+        <div class="section">
+            <h2>Easy to use, and always up to date</h2>
+            <p>RoVer will keep your members' roles and nickname up-to-date automatically over time, without your users needing to do anything special.</p>
+            <p>And RoVer integrates with the Discord UI, so you can always update a user as-needed with a click of a button.</p>
+        </div>
+
+        <div class="section">
+            <h2>No advertisements</h2>
+            <p>We will never display any ads to you, or to your members. Our revenue comes 100% from server owners who directly support us.</p>
+            <p>We care about your privacy, and will never track you or collect any unnecessary data.</p>
+        </div>
+
+        <div class="section">
+            <h2>Trusted by the biggest servers</h2>
+            <p>Millions of people are already verified with RoVer, so many of your server members will likely already be verified.</p>
+            <p>Some of the biggest Roblox communities on Discord trust RoVer to keep their server safe and integrated. No matter how large your community is, RoVer can handle it.</p>
+        </div>
+
+        <div class="cta">
+            <a href="https://www.roblox.com/login" class="button">Add RoVer Now</a>
+        </div>
     </div>
+
+    <footer>
+        <p>Getting started is easy. Add RoVer to your server and set everything up through our easy-to-use web dashboard.</p>
+    </footer>
 </body>
 </html>
