@@ -95,22 +95,22 @@ body::after {
 
 /* Main container */
 .container {
-    max-width: 1800px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
     display: flex;
     gap: 4rem;
     position: relative;
     z-index: 1;
+    align-items: flex-start;
 }
 
-/* Left side compact layout */
+/* Left side */
 .left {
     flex: 0 0 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 1.5rem;
 }
 
@@ -197,22 +197,22 @@ body::after {
     opacity: 0.5;
 }
 
-/* Right side centered */
+/* Right side aligned with left */
 .right {
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: flex-start;
     gap: 2rem;
 }
 
 /* Stats layout horizontal and centered */
 .stats {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     gap: 4rem;
     text-align: center;
+    width: 100%;
 }
 
 .stats div {
@@ -237,6 +237,7 @@ body::after {
 .features ul {
     list-style: none;
     text-align: center;
+    padding: 0;
 }
 
 .features li {
@@ -251,12 +252,12 @@ body::after {
         align-items: center;
     }
     .left {
-        flex: none;
         width: 100%;
         gap: 1rem;
     }
     .right {
         width: 100%;
+        align-items: center;
     }
     .main-logo-bg {
         width: 180px;
