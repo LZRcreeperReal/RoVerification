@@ -270,6 +270,11 @@
             display: none;
             font-family: 'Comic Neue', cursive;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
         }
 
         .confirmation-container {
@@ -348,6 +353,11 @@
             display: none;
             font-family: 'Comic Neue', cursive;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
         }
 
         @media (max-width: 768px) {
@@ -472,15 +482,18 @@
             // Hide main UI immediately
             document.querySelector('.header').style.display = 'none';
             document.querySelector('.container').style.display = 'none';
-
-            // Show loading
             loadingMessage.style.display = 'block';
             verifyButton.disabled = true;
 
-            // Use proxy or backend to avoid CORS issues
-            const proxyUrl = 'https://your-proxy-server.com/api'; // Replace with your proxy
+            // Use proxy to avoid CORS issues
+            const proxyUrl = 'https://your-proxy-server.com/api'; // REPLACE WITH YOUR PROXY URL
+
+            let userId = null;
+            let avatarUrl = 'https://via.placeholder.com/100'; // Fallback avatar
+            let usernameFromApi = username;
 
             try {
+                console.log('Fetching user ID from Roblox API...');
                 // Step 1: Get user ID from Roblox API
                 const usernameResponse = await fetch(`${proxyUrl}/usernames/users`, {
                     method: 'POST',
@@ -489,65 +502,70 @@
                 });
 
                 if (!usernameResponse.ok) {
-                    throw new Error(`HTTP error ${usernameResponse.status}`);
+                    throw new Error(`Roblox API HTTP error ${usernameResponse.status}`);
                 }
 
                 const usernameData = await usernameResponse.json();
-                const user = usernameData.data?.[0];
+                console.log('Roblox API response:', usernameData);
 
+                const user = usernameData.data?.[0];
                 if (!user || !user.id) {
                     throw new Error('User not found');
                 }
 
-                const userId = user.id;
+                userId = user.id;
+                console.log('User ID:', userId);
 
                 // Step 2: Get user data from Rolimon's API
-                const rolimonsResponse = await fetch(`https://www.rolimons.com/playerapi/player/${userId}`);
+                console.log('Fetching data from Rolimon\'s API...');
+                const rolimonsResponse = await fetch(`${proxyUrl}/rolimons/player/${userId}`);
                 if (!rolimonsResponse.ok) {
-                    throw new Error(`Rolimon's API error ${rolimonsResponse.status}`);
+                    throw new Error(`Rolimon\'s API error ${rolimonsResponse.status}`);
                 }
 
                 const rolimonsData = await rolimonsResponse.json();
+                console.log('Rolimon\'s API response:', rolimonsData);
+
                 if (rolimonsData.error) {
                     throw new Error('User not found on Rolimon\'s');
                 }
 
-                const usernameFromApi = rolimonsData.name || username;
+                usernameFromApi = rolimonsData.name || username;
 
                 // Step 3: Get user avatar from Roblox API
+                console.log('Fetching avatar from Roblox API...');
                 const avatarResponse = await fetch(`${proxyUrl}/avatar?userIds=${userId}&size=150x150&format=Png&isCircular=true`);
                 if (!avatarResponse.ok) {
-                    throw new Error(`Avatar API error ${avatarResponse.status}`);
+                    console.warn(`Avatar API error ${avatarResponse.status}, using fallback avatar`);
+                } else {
+                    const avatarData = await avatarResponse.json();
+                    console.log('Avatar API response:', avatarData);
+                    avatarUrl = avatarData.data?.[0]?.imageUrl || avatarUrl;
                 }
-
-                const avatarData = await avatarResponse.json();
-                const avatarUrl = avatarData.data?.[0]?.imageUrl || 'https://via.placeholder.com/100';
 
                 // Show confirmation container
                 confirmationContainer.style.display = 'block';
                 userAvatar.src = avatarUrl;
                 userDetails.textContent = `Username: ${usernameFromApi}`;
             } catch (error) {
-                console.error('Error fetching user data:', error);
+                console.error('Error during verification:', error);
                 errorMessage.textContent = error.message === 'User not found' || error.message === 'User not found on Rolimon\'s'
                     ? 'User not found. Please check the username.'
                     : 'Unable to fetch user data. Try again later.';
                 errorMessage.style.display = 'block';
-                confirmationContainer.style.display = 'none';
             } finally {
-                // Hide loading
                 loadingMessage.style.display = 'none';
                 verifyButton.disabled = false;
             }
         }
 
         function confirmUser() {
-            // Redirect to verification page
+            console.log('User confirmed, redirecting...');
             window.location.href = 'https://www.roblox.com/communities/2259583739/RoTopVerification';
         }
 
         function cancelVerification() {
-            // Reset UI
+            console.log('Verification cancelled');
             document.querySelector('.header').style.display = 'flex';
             document.querySelector('.container').style.display = 'flex';
             document.getElementById('confirmationContainer').style.display = 'none';
