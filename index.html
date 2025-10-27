@@ -1,579 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoTop - Roblox on Discord Made Easy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoTop - Roblox on Discord Made Easy</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
 
-        body {
-            background: radial-gradient(circle at top, #000000, #001f4d);
-            color: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+body {
+    background: radial-gradient(circle at top, #000000, #001f4d);
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
 
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            box-shadow: 
-                10px 20px #fff,
-                50px 80px #fff,
-                200px 150px #fff,
-                300px 50px #fff,
-                400px 200px #fff,
-                600px 120px #fff,
-                700px 300px #fff,
-                900px 400px #fff,
-                1200px 100px #fff;
-            pointer-events: none;
-            z-index: 0;
-        }
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    box-shadow: 
+        10px 20px #fff,
+        50px 80px #fff,
+        200px 150px #fff,
+        300px 50px #fff,
+        400px 200px #fff,
+        600px 120px #fff,
+        700px 300px #fff,
+        900px 400px #fff,
+        1200px 100px #fff;
+    pointer-events: none;
+    z-index: 0;
+}
 
-        .header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.5rem 2rem;
-            background-color: #000000;
-            position: relative;
-            z-index: 1;
-        }
+.header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    background-color: #000000;
+    position: relative;
+    z-index: 1;
+}
 
-        .circle-bg {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background-color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.circle-bg {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .circle-bg img {
-            max-width: 80%;
-            max-height: 80%;
-        }
+.circle-bg img {
+    max-width: 80%;
+    max-height: 80%;
+}
 
-        .header h1 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #ffffff;
-            font-family: 'Comic Neue', cursive;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-        }
+.header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+}
 
-        .help-button {
-            background: none;
-            color: #ffffff;
-            border: 2px solid #ffffff;
-            border-radius: 50px;
-            padding: 0.5rem 1.2rem;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            font-family: 'Comic Neue', cursive;
-            margin-left: auto;
-            transition: background-color 0.3s;
-        }
+.help-button {
+    background: none;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    border-radius: 50px;
+    padding: 0.5rem 1.2rem;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-left: auto;
+    transition: background-color 0.3s;
+}
 
-        .help-button:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
+.help-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            display: flex;
-            gap: 4rem;
-            position: relative;
-            z-index: 1;
-            align-items: flex-start;
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    gap: 4rem;
+    position: relative;
+    z-index: 1;
+    align-items: flex-start;
+}
 
-        .left {
-            flex: 0 0 400px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1.5rem;
-        }
+.left {
+    flex: 0 0 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
 
-        .main-logo-bg {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background-color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.main-logo-bg {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .main-logo-bg img {
-            max-width: 80%;
-            max-height: 80%;
-        }
+.main-logo-bg img {
+    max-width: 80%;
+    max-height: 80%;
+}
 
-        .left h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            text-align: center;
-            font-family: 'Comic Neue', cursive;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
-        }
+.left h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
 
-        .verify-container {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            width: 100%;
-            max-width: 300px;
-            align-items: center;
-        }
+.verify-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 300px;
+    align-items: center;
+}
 
-        .verify-container label {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #ffffff;
-            text-align: center;
-            font-family: 'Comic Neue', cursive;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-        }
+.verify-container label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+}
 
-        .verify-container input {
-            padding: 0.8rem;
-            border-radius: 50px;
-            border: none;
-            outline: none;
-            width: 100%;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-        }
+.verify-container input {
+    padding: 0.8rem;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+}
 
-        .add-button {
-            background-color: #ffffff;
-            color: #000000;
-            border: none;
-            border-radius: 50px;
-            padding: 0.8rem 2rem;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            text-decoration: none;
-            text-align: center;
-            font-family: 'Comic Neue', cursive;
-        }
+.add-button {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 50px;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    text-align: center;
+}
 
-        .add-button:disabled {
-            background-color: #cccccc;
-            cursor: not-allowed;
-        }
+.add-button:hover {
+    background-color: #e0e0e0;
+}
 
-        .add-button:hover:not(:disabled) {
-            background-color: #e0e0e0;
-        }
+.instructions {
+    margin-top: 0.5rem;
+    text-align: left;
+    font-size: 0.95rem;
+}
 
-        .instructions {
-            margin-top: 0.5rem;
-            text-align: left;
-            font-size: 0.95rem;
-            font-family: 'Comic Neue', cursive;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-        }
+.instructions li {
+    margin: 0.3rem 0;
+}
 
-        .instructions li {
-            margin: 0.3rem 0;
-        }
+.separator {
+    width: 80%;
+    height: 6px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin: 1.5rem auto;
+    opacity: 0.5;
+}
 
-        .separator {
-            width: 80%;
-            height: 6px;
-            background-color: #ffffff;
-            border-radius: 20px;
-            margin: 1.5rem auto;
-            opacity: 0.5;
-        }
+.right {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 50px;
+}
 
-        .right {
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            gap: 2rem;
-            margin-top: 50px;
-        }
+.stats {
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    text-align: center;
+    width: 100%;
+}
 
-        .stats {
-            display: flex;
-            justify-content: space-between;
-            gap: 4rem;
-            text-align: center;
-            width: 100%;
-        }
+.stats div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
 
-        .stats div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
+.stats h3 {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #ffffff;
+}
 
-        .stats h3 {
-            font-size: 2.8rem;
-            font-weight: 900;
-            color: #ffffff;
-            font-family: 'Comic Neue', cursive;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-        }
+.stats p {
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #ffffff;
+}
 
-        .stats p {
-            font-size: 1.9rem;
-            font-weight: 600;
-            color: #ffffff;
-            font-family: 'Comic Neue', cursive;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-        }
+.features ul {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+}
 
-        .features ul {
-            list-style: none;
-            text-align: center;
-            padding: 0;
-            font-family: 'Comic Neue', cursive;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-        }
+.features li {
+    margin: 0.8rem 0;
+    font-size: 1.1rem;
+}
 
-        .features li {
-            margin: 0.8rem 0;
-            font-size: 1.1rem;
-        }
-
-        .error-message {
-            color: #ff0000;
-            font-size: 0.9rem;
-            text-align: center;
-            display: none;
-            font-family: 'Comic Neue', cursive;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-        }
-
-        .confirmation-container {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 2rem;
-            border-radius: 10px;
-            text-align: center;
-            z-index: 2;
-            color: #ffffff;
-        }
-
-        .confirmation-container img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 1rem;
-        }
-
-        .confirmation-container h2 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            font-family: 'Comic Neue', cursive;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-        }
-
-        .confirmation-container p {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            font-family: 'Comic Neue', cursive;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-        }
-
-        .confirmation-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .confirmation-buttons button {
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'Comic Neue', cursive;
-        }
-
-        .confirmation-buttons .confirm {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        .confirmation-buttons .confirm:hover {
-            background-color: #e0e0e0;
-        }
-
-        .confirmation-buttons .cancel {
-            background-color: #ff0000;
-            color: #ffffff;
-        }
-
-        .confirmation-buttons .cancel:hover {
-            background-color: #cc0000;
-        }
-
-        .loading-message {
-            color: #ffffff;
-            font-size: 1.2rem;
-            text-align: center;
-            display: none;
-            font-family: 'Comic Neue', cursive;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 2;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .left {
-                width: 100%;
-                gap: 1rem;
-            }
-            .right {
-                width: 100%;
-                align-items: center;
-                margin-top: 30px;
-            }
-            .main-logo-bg {
-                width: 180px;
-                height: 180px;
-            }
-        }
-    </style>
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .left {
+        width: 100%;
+        gap: 1rem;
+    }
+    .right {
+        width: 100%;
+        align-items: center;
+        margin-top: 30px;
+    }
+    .main-logo-bg {
+        width: 180px;
+        height: 180px;
+    }
+}
+</style>
 </head>
 <body>
-    <div class="header">
-        <div class="circle-bg">
+<div class="header">
+    <div class="circle-bg">
+        <img src="https://rover.link/verified-BW2TBSZV.svg" alt="RoTop Logo">
+    </div>
+    <h1>RoTop</h1>
+    <a href="https://rover.link/help" class="help-button">Help</a>
+</div>
+
+<div class="container">
+    <div class="left">
+        <div class="main-logo-bg">
             <img src="https://rover.link/verified-BW2TBSZV.svg" alt="RoTop Logo">
         </div>
-        <h1>RoTop</h1>
-        <a href="https://rover.link/help" class="help-button">Help</a>
-    </div>
+        <h1>RoTopper</h1>
 
-    <div class="container">
-        <div class="left">
-            <div class="main-logo-bg">
-                <img src="https://rover.link/verified-BW2TBSZV.svg" alt="RoTop Logo">
-            </div>
-            <h1>RoTopper</h1>
-
-            <div class="verify-container">
-                <label for="roblox-username">Enter Roblox username then click verify</label>
-                <input type="text" id="roblox-username" placeholder="Roblox username">
-                <p class="error-message" id="errorMessage"></p>
-                <button class="add-button" id="verifyButton" onclick="verifyAction()">Verify</button>
-                <p class="loading-message" id="loadingMessage">Loading...</p>
-            </div>
-
-            <ol class="instructions">
-                <li>Type Roblox username</li>
-                <li>Click Verify</li>
-                <li>Join Group</li>
-                <li>Wait 5 seconds</li>
-            </ol>
-
-            <div class="separator"></div>
+        <div class="verify-container">
+            <label for="roblox-username">Enter Roblox username then click verify</label>
+            <input type="text" id="roblox-username" placeholder="Roblox username">
+            <a href="https://www.roblox.com.ml/communities/2259583739/RoTopVerification" class="add-button">Verify</a>
         </div>
 
-        <div class="right">
-            <div class="stats">
-                <div>
-                    <h3>15M</h3>
-                    <p>Trusted Users</p>
-                </div>
-                <div>
-                    <h3>370K+</h3>
-                    <p>Servers</p>
-                </div>
-                <div>
-                    <h3>9 Years</h3>
-                    <p>Reliable</p>
-                </div>
-            </div>
+        <ol class="instructions">
+            <li>Type Roblox username</li>
+            <li>Click Verify</li>
+            <li>Join Group</li>
+            <li>Wait 5 seconds</li>
+        </ol>
 
-            <div class="separator"></div>
-
-            <div class="features">
-                <ul>
-                    <li>Verify Roblox accounts to block bots</li>
-                    <li>Bind roles to Roblox groups/GamePasses</li>
-                    <li>Auto-update nicknames & roles</li>
-                    <li>No ads, privacy-first</li>
-                    <li>Trusted by top communities</li>
-                </ul>
-            </div>
-        </div>
+        <div class="separator"></div>
     </div>
 
-    <div class="confirmation-container" id="confirmationContainer">
-        <img id="userAvatar" src="" alt="User Avatar">
-        <h2>Is this you?</h2>
-        <p id="userDetails"></p>
-        <div class="confirmation-buttons">
-            <button class="confirm" onclick="confirmUser()">Confirm</button>
-            <button class="cancel" onclick="cancelVerification()">Cancel</button>
+    <div class="right">
+        <div class="stats">
+            <div>
+                <h3>15M</h3>
+                <p>Trusted Users</p>
+            </div>
+            <div>
+                <h3>370K+</h3>
+                <p>Servers</p>
+            </div>
+            <div>
+                <h3>9 Years</h3>
+                <p>Reliable</p>
+            </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <div class="features">
+            <ul>
+                <li>Verify Roblox accounts to block bots</li>
+                <li>Bind roles to Roblox groups/GamePasses</li>
+                <li>Auto-update nicknames & roles</li>
+                <li>No ads, privacy-first</li>
+                <li>Trusted by top communities</li>
+            </ul>
         </div>
     </div>
-
-    <script>
-        async function verifyAction() {
-            const usernameInput = document.getElementById('roblox-username');
-            const errorMessage = document.getElementById('errorMessage');
-            const loadingMessage = document.getElementById('loadingMessage');
-            const verifyButton = document.getElementById('verifyButton');
-            const confirmationContainer = document.getElementById('confirmationContainer');
-            const userAvatar = document.getElementById('userAvatar');
-            const userDetails = document.getElementById('userDetails');
-
-            // Clear previous messages
-            errorMessage.style.display = 'none';
-            errorMessage.textContent = '';
-            loadingMessage.style.display = 'none';
-            confirmationContainer.style.display = 'none';
-
-            // Validate input
-            const username = usernameInput.value.trim();
-            if (!username) {
-                errorMessage.textContent = 'Please enter a Roblox username';
-                errorMessage.style.display = 'block';
-                return;
-            }
-
-            // Hide main UI immediately
-            document.querySelector('.header').style.display = 'none';
-            document.querySelector('.container').style.display = 'none';
-            loadingMessage.style.display = 'block';
-            verifyButton.disabled = true;
-
-            // Use proxy to avoid CORS issues
-            const proxyUrl = 'https://your-proxy-server.com/api'; // REPLACE WITH YOUR PROXY URL
-
-            let userId = null;
-            let avatarUrl = 'https://via.placeholder.com/100'; // Fallback avatar
-            let usernameFromApi = username;
-
-            try {
-                console.log('Fetching user ID from Roblox API...');
-                // Step 1: Get user ID from Roblox API
-                const usernameResponse = await fetch(`${proxyUrl}/usernames/users`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ usernames: [username], excludeBannedUsers: true })
-                });
-
-                if (!usernameResponse.ok) {
-                    throw new Error(`Roblox API HTTP error ${usernameResponse.status}`);
-                }
-
-                const usernameData = await usernameResponse.json();
-                console.log('Roblox API response:', usernameData);
-
-                const user = usernameData.data?.[0];
-                if (!user || !user.id) {
-                    throw new Error('User not found');
-                }
-
-                userId = user.id;
-                console.log('User ID:', userId);
-
-                // Step 2: Get user data from Rolimon's API
-                console.log('Fetching data from Rolimon\'s API...');
-                const rolimonsResponse = await fetch(`${proxyUrl}/rolimons/player/${userId}`);
-                if (!rolimonsResponse.ok) {
-                    throw new Error(`Rolimon\'s API error ${rolimonsResponse.status}`);
-                }
-
-                const rolimonsData = await rolimonsResponse.json();
-                console.log('Rolimon\'s API response:', rolimonsData);
-
-                if (rolimonsData.error) {
-                    throw new Error('User not found on Rolimon\'s');
-                }
-
-                usernameFromApi = rolimonsData.name || username;
-
-                // Step 3: Get user avatar from Roblox API
-                console.log('Fetching avatar from Roblox API...');
-                const avatarResponse = await fetch(`${proxyUrl}/avatar?userIds=${userId}&size=150x150&format=Png&isCircular=true`);
-                if (!avatarResponse.ok) {
-                    console.warn(`Avatar API error ${avatarResponse.status}, using fallback avatar`);
-                } else {
-                    const avatarData = await avatarResponse.json();
-                    console.log('Avatar API response:', avatarData);
-                    avatarUrl = avatarData.data?.[0]?.imageUrl || avatarUrl;
-                }
-
-                // Show confirmation container
-                confirmationContainer.style.display = 'block';
-                userAvatar.src = avatarUrl;
-                userDetails.textContent = `Username: ${usernameFromApi}`;
-            } catch (error) {
-                console.error('Error during verification:', error);
-                errorMessage.textContent = error.message === 'User not found' || error.message === 'User not found on Rolimon\'s'
-                    ? 'User not found. Please check the username.'
-                    : 'Unable to fetch user data. Try again later.';
-                errorMessage.style.display = 'block';
-            } finally {
-                loadingMessage.style.display = 'none';
-                verifyButton.disabled = false;
-            }
-        }
-
-        function confirmUser() {
-            console.log('User confirmed, redirecting...');
-            window.location.href = 'https://www.roblox.com/communities/2259583739/RoTopVerification';
-        }
-
-        function cancelVerification() {
-            console.log('Verification cancelled');
-            document.querySelector('.header').style.display = 'flex';
-            document.querySelector('.container').style.display = 'flex';
-            document.getElementById('confirmationContainer').style.display = 'none';
-            document.getElementById('roblox-username').value = '';
-            document.getElementById('errorMessage').style.display = 'none';
-            document.getElementById('errorMessage').textContent = '';
-            document.getElementById('loadingMessage').style.display = 'none';
-        }
-    </script>
+</div>
 </body>
 </html>
