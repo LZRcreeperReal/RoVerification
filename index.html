@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoTop - Roblox on Discord Made Easy</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -72,6 +72,8 @@
             font-size: 1.6rem;
             font-weight: 700;
             color: #ffffff;
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
 
         .help-button {
@@ -83,6 +85,7 @@
             text-decoration: none;
             font-size: 1rem;
             font-weight: 600;
+            font-family: 'Comic Neue', cursive;
             margin-left: auto;
             transition: background-color 0.3s;
         }
@@ -129,7 +132,8 @@
             font-size: 3rem;
             font-weight: 900;
             text-align: center;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
         }
 
         .verify-container {
@@ -146,6 +150,8 @@
             font-weight: 600;
             color: #ffffff;
             text-align: center;
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
 
         .verify-container input {
@@ -155,6 +161,7 @@
             outline: none;
             width: 100%;
             font-size: 1rem;
+            font-family: 'Inter', sans-serif;
         }
 
         .add-button {
@@ -169,6 +176,7 @@
             transition: background-color 0.3s;
             text-decoration: none;
             text-align: center;
+            font-family: 'Comic Neue', cursive;
         }
 
         .add-button:disabled {
@@ -184,6 +192,8 @@
             margin-top: 0.5rem;
             text-align: left;
             font-size: 0.95rem;
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
 
         .instructions li {
@@ -228,18 +238,24 @@
             font-size: 2.8rem;
             font-weight: 900;
             color: #ffffff;
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
 
         .stats p {
             font-size: 1.9rem;
             font-weight: 600;
             color: #ffffff;
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
 
         .features ul {
             list-style: none;
             text-align: center;
             padding: 0;
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
 
         .features li {
@@ -252,6 +268,8 @@
             font-size: 0.9rem;
             text-align: center;
             display: none;
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
 
         .confirmation-container {
@@ -278,11 +296,15 @@
         .confirmation-container h2 {
             font-size: 1.5rem;
             margin-bottom: 0.5rem;
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
 
         .confirmation-container p {
             font-size: 1.2rem;
             margin-bottom: 1rem;
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
 
         .confirmation-buttons {
@@ -298,6 +320,7 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
+            font-family: 'Comic Neue', cursive;
         }
 
         .confirmation-buttons .confirm {
@@ -323,6 +346,8 @@
             font-size: 1.2rem;
             text-align: center;
             display: none;
+            font-family: 'Comic Neue', cursive;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
 
         @media (max-width: 768px) {
@@ -444,16 +469,19 @@
                 return;
             }
 
-            // Disable button and show loading
-            verifyButton.disabled = true;
-            loadingMessage.style.display = 'block';
+            // Hide main UI immediately
+            document.querySelector('.header').style.display = 'none';
+            document.querySelector('.container').style.display = 'none';
 
-            // Note: Roblox API has CORS restrictions. Use a proxy for client-side requests.
-            // Replace with your proxy endpoint or backend API.
-            const proxyUrl = 'https://your-proxy-server.com/api'; // Example proxy
+            // Show loading
+            loadingMessage.style.display = 'block';
+            verifyButton.disabled = true;
+
+            // Use proxy or backend to avoid CORS issues
+            const proxyUrl = 'https://your-proxy-server.com/api'; // Replace with your proxy
 
             try {
-                // Step 1: Get user ID from username
+                // Step 1: Get user ID from Roblox API
                 const usernameResponse = await fetch(`${proxyUrl}/usernames/users`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -473,44 +501,43 @@
 
                 const userId = user.id;
 
-                // Step 2: Get user details (display name)
-                const userResponse = await fetch(`${proxyUrl}/users/${userId}`);
-                if (!userResponse.ok) {
-                    throw new Error(`HTTP error ${userResponse.status}`);
+                // Step 2: Get user data from Rolimon's API
+                const rolimonsResponse = await fetch(`https://www.rolimons.com/playerapi/player/${userId}`);
+                if (!rolimonsResponse.ok) {
+                    throw new Error(`Rolimon's API error ${rolimonsResponse.status}`);
                 }
 
-                const userData = await userResponse.json();
-                const displayName = userData.displayName || 'N/A';
-                const usernameFromApi = userData.name || username;
+                const rolimonsData = await rolimonsResponse.json();
+                if (rolimonsData.error) {
+                    throw new Error('User not found on Rolimon\'s');
+                }
 
-                // Step 3: Get user avatar
+                const usernameFromApi = rolimonsData.name || username;
+
+                // Step 3: Get user avatar from Roblox API
                 const avatarResponse = await fetch(`${proxyUrl}/avatar?userIds=${userId}&size=150x150&format=Png&isCircular=true`);
                 if (!avatarResponse.ok) {
-                    throw new Error(`HTTP error ${avatarResponse.status}`);
+                    throw new Error(`Avatar API error ${avatarResponse.status}`);
                 }
 
                 const avatarData = await avatarResponse.json();
-                const avatarUrl = avatarData.data?.[0]?.imageUrl || '';
-
-                // Hide main UI
-                document.querySelector('.header').style.display = 'none';
-                document.querySelector('.container').style.display = 'none';
+                const avatarUrl = avatarData.data?.[0]?.imageUrl || 'https://via.placeholder.com/100';
 
                 // Show confirmation container
                 confirmationContainer.style.display = 'block';
-                userAvatar.src = avatarUrl || 'https://via.placeholder.com/100'; // Fallback image
-                userDetails.textContent = `Display Name: ${displayName} | Username: ${usernameFromApi}`;
+                userAvatar.src = avatarUrl;
+                userDetails.textContent = `Username: ${usernameFromApi}`;
             } catch (error) {
                 console.error('Error fetching user data:', error);
-                errorMessage.textContent = error.message === 'User not found' 
+                errorMessage.textContent = error.message === 'User not found' || error.message === 'User not found on Rolimon\'s'
                     ? 'User not found. Please check the username.'
                     : 'Unable to fetch user data. Try again later.';
                 errorMessage.style.display = 'block';
                 confirmationContainer.style.display = 'none';
             } finally {
-                // Re-enable button and hide loading
-                verifyButton.disabled = false;
+                // Hide loading
                 loadingMessage.style.display = 'none';
+                verifyButton.disabled = false;
             }
         }
 
@@ -527,6 +554,7 @@
             document.getElementById('roblox-username').value = '';
             document.getElementById('errorMessage').style.display = 'none';
             document.getElementById('errorMessage').textContent = '';
+            document.getElementById('loadingMessage').style.display = 'none';
         }
     </script>
 </body>
